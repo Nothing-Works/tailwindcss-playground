@@ -7,22 +7,34 @@
     <link rel="stylesheet" href="/src/build.css">
 </head>
 
-<body class="bg-gray-100">
-    <div class="px-8 py-12">
-        <img class="h-10" src="/src/img/logo.svg" alt="logo">
-        <img class="mt-6 rounded-lg shadow-xl" src="/src/img/beach-work.jpg" alt="logo">
-        <h1 class="mt-6 text-2xl font-bold text-gray-900 leading-tight">
-            You can work from anywhere. <span class="text-indigo-500">Take advantage of it.</span>
-        </h1>
-        <p class="mt-2 text-gray-600">
-            Workcation helps you find work-friendly rentals in beautiful locations so you can enjoy some nice weather
-            even when you are not on vacation.
-        </p>
-        <div class="mt-4">
-            <a href="#"
-                class="inline-block bg-indigo-500 text-sm text-white px-5 py-3 rounded-lg shadow-lg uppercase tracking-wider font-semibold">Book
-                your
-                escape</a>
+<body class="bg-gray-300">
+    <div class="bg-gray-100 flex">
+        <div class="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12">
+            <div class="xl:max-w-lg xl:ml-auto">
+                <img class="h-10" src="/src/img/logo.svg" alt="logo">
+                <img class="mt-6 sm:mt-8 sm:h-64 sm:w-full sm:object-cover sm:object-center rounded-lg shadow-xl lg:hidden"
+                    src="/src/img/beach-work.jpg" alt="logo">
+                <h1
+                    class="mt-6 text-2xl sm:text-4xl sm:mt-8 lg:text-3xl font-bold text-gray-900 leading-tight xl:text-4xl">
+                    You can work from anywhere. <br class="hidden lg:inline"> <span class="text-indigo-500">Take
+                        advantage of it.</span>
+                </h1>
+                <p class="mt-2 text-gray-600 sm:text-xl sm:mt-4">
+                    Workcation helps you find work-friendly rentals in beautiful locations so you can enjoy some nice
+                    weather
+                    even when you are not on vacation.
+                </p>
+                <div class="mt-4 sm:mt-6">
+                    <a href="#"
+                        class="inline-block bg-indigo-500 active:bg-indigo-600 hover:bg-indigo-400 focus:outline-none focus:shadow-outline text-sm text-white px-5 py-3 rounded-lg shadow-lg uppercase tracking-wider font-semibold sm:text-base">Book
+                        your
+                        escape</a>
+                </div>
+            </div>
+        </div>
+        <div class="hidden lg:block lg:w-1/2 lg:relative">
+            <img class="absolute inset-0 h-full w-full object-cover object-center" src="/src/img/beach-work.jpg"
+                alt="logo">
         </div>
     </div>
 </body>
