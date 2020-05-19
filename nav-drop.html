@@ -1,93 +1,118 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="/src/build.css" />
+    <link rel="stylesheet" href="./src/build.css" />
   </head>
 
-  <body class="antialiased text-gray-900">
+  <body>
     <header
       class="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
+      x-data="{ isOpen: false }"
     >
       <div class="flex items-center justify-between px-4 py-3 sm:p-0">
         <div>
-          <img class="h-8" src="/src/img/logo-inverted.svg" alt="Workcaiton" />
+          <img class="h-8" src="/src/img/logo-inverted.svg" alt="logo" />
         </div>
         <div class="sm:hidden">
           <button
-            id="btn"
+            @click="isOpen = !isOpen"
             type="button"
-            class="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
+            class="text-gray-500 focus:text-white focus:outline-none hover:text-white"
           >
             <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
               <path
-                id="close"
-                class="hidden"
-                fill-rule="evenodd"
-                d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-              />
-              <path
-                id="open"
+                x-show="!isOpen"
                 fill-rule="evenodd"
                 d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+              />
+              <path
+                x-show="isOpen"
+                fill-rule="evenodd"
+                d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
               />
             </svg>
           </button>
         </div>
       </div>
-      <nav class="hidden px-2 pt-2 pb-4 sm:flex sm:p-0" id="menu">
-        <a
-          href="#"
-          class="block px-2 py-1 font-semibold text-white rounded hover:bg-gray-800"
-          >List your property</a
-        >
-        <a
-          href="#"
-          class="block px-2 py-1 mt-1 font-semibold text-white rounded hover:bg-gray-800 sm:mt-0 sm:ml-2"
-          >Trips</a
-        >
-        <a
-          href="#"
-          class="block px-2 py-1 mt-1 font-semibold text-white rounded hover:bg-gray-800 sm:mt-0 sm:ml-2"
-          >Messages</a
-        >
-        <div class="relative ml-6" x-data="{ open: false }">
-          <button
-            @click="open = !open"
-            class="relative z-10 block w-8 h-8 overflow-hidden border-2 border-gray-600 rounded-full focus:outline-none focus:border-white"
+      <nav :class="isOpen ? 'block' : 'hidden'" class="sm:block">
+        <div class="px-2 pt-2 pb-4 sm:flex sm:p-0">
+          <a
+            href="#"
+            class="block px-2 py-1 font-semibold text-white rounded hover:bg-gray-800"
+            >List your property</a
           >
+          <a
+            href="#"
+            class="block px-2 py-1 mt-1 font-semibold text-white rounded sm:mt-0 sm:ml-2 hover:bg-gray-800"
+            >Trips</a
+          >
+          <a
+            href="#"
+            class="block px-2 py-1 mt-1 font-semibold text-white rounded sm:mt-0 sm:ml-2 hover:bg-gray-800"
+            >Messages</a
+          >
+          <div
+            class="relative hidden sm:ml-6 sm:block"
+            x-data="{ open: false }"
+          >
+            <button
+              @click="open = !open"
+              class="relative z-10 block w-8 h-8 overflow-hidden border-2 border-gray-600 rounded-full focus:outline-none focus:border-white"
+            >
+              <img
+                class="object-cover w-full h-full"
+                src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80"
+                alt="Your avatar"
+              />
+            </button>
+            <button
+              x-show="open"
+              tabindex="-1"
+              @click="open = false"
+              class="fixed inset-0 w-full h-full bg-black opacity-50 cursor-default"
+            ></button>
+            <div
+              x-show="open"
+              class="absolute right-0 w-48 py-2 mt-2 bg-white rounded-lg shadow-xl"
+            >
+              <a
+                href="#"
+                class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
+                >Account settings</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
+                >Support</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
+                >Sign out</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="px-4 py-5 border-t border-gray-800 sm:hidden">
+          <div class="flex items-center">
             <img
-              class="object-cover w-full h-full"
+              class="object-cover w-8 h-8 border-2 border-gray-600 rounded-full"
               src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80"
               alt="Your avatar"
             />
-          </button>
-          <button
-            x-show="open"
-            tabindex="-1"
-            @click="open = false"
-            class="fixed inset-0 w-full h-full bg-black opacity-50 cursor-default"
-          ></button>
-          <div
-            x-show="open"
-            class="absolute right-0 w-48 py-2 mt-2 bg-white rounded-lg shadow-xl"
-          >
-            <a
-              href="#"
-              class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
+            <span class="ml-3 font-semibold text-white">Jane Doe</span>
+          </div>
+          <div class="mt-4">
+            <a href="#" class="block text-gray-400 hover:text-white"
               >Account settings</a
             >
-            <a
-              href="#"
-              class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
+            <a href="#" class="block mt-2 text-gray-400 hover:text-white"
               >Support</a
             >
-            <a
-              href="#"
-              class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
+            <a href="#" class="block mt-2 text-gray-400 hover:text-white"
               >Sign out</a
             >
           </div>
