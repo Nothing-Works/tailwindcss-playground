@@ -54,9 +54,10 @@
           class="block px-2 py-1 mt-1 font-semibold text-white rounded hover:bg-gray-800 sm:mt-0 sm:ml-2"
           >Messages</a
         >
-        <div class="relative ml-6">
+        <div class="relative ml-6" x-data="{ open: false }">
           <button
-            class="block w-8 h-8 overflow-hidden border-2 border-gray-600 rounded-full focus:outline-none focus:border-white"
+            @click="open = !open"
+            class="relative z-10 block w-8 h-8 overflow-hidden border-2 border-gray-600 rounded-full focus:outline-none focus:border-white"
           >
             <img
               class="object-cover w-full h-full"
@@ -64,7 +65,14 @@
               alt="Your avatar"
             />
           </button>
+          <button
+            x-show="open"
+            tabindex="-1"
+            @click="open = false"
+            class="fixed inset-0 w-full h-full bg-black opacity-50 cursor-default"
+          ></button>
           <div
+            x-show="open"
             class="absolute right-0 w-48 py-2 mt-2 bg-white rounded-lg shadow-xl"
           >
             <a
